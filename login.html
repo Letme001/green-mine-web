@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+    <link rel="stylesheet" href="layui/css/layui.css">
+    <script src="layui/layui.js"></script>
+    <link rel="stylesheet" type="text/css" href="lib/notice/iziToast.min.css">
+    <script src="lib/notice/iziToast.min.js"></script>
+    <style>
+        .login{
+            width:100vw;
+            height:100vh;
+            background: url('assets/img/bg4.jpg');
+            background-size: 100%;
+        }
+        .loginForm{
+            padding:20px;
+            background-color: #ffffffaa;
+            position:fixed;
+            top:50%;
+            left:50%;
+            width:350px;
+            transform:translate(-50%,-50%);
+            border-radius: 8px;
+        }
+        .layui-input-icon-group{
+            position:relative;
+        }
+        .layui-input-icon-group .layui-input{
+            padding-left:50px;
+        }
+        .layui-input-icon-group > .layui-icon {
+            width: 46px;
+            height: 46px;
+            line-height: 46px;
+            font-size: 20px;
+            color: #909399;
+            position: absolute;
+            left: 0;
+            top: 0;
+            text-align: center;
+        }
+        .layui-form h2{
+            margin:20px 0;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="login"></div>
+    <form class="loginForm layui-form">
+        <h2>绿色矿山资源管理系统</h2>
+        <div class="layui-form-item layui-input-icon-group">
+            <label class="layui-icon layui-icon-username" for="username"></label>
+            <input type="text" name="username" id="username" lay-verify="required" placeholder="用户名" class="layui-input">
+        </div>
+        <div class="layui-form-item layui-input-icon-group">
+            <label class="layui-icon layui-icon-password" for="password"></label>
+            <input type="password" name="password" id="password" lay-verify="required" placeholder="密码" class="layui-input">
+        </div>
+        <div class="layui-form-item" style="margin-bottom: 20px;">
+            <input type="checkbox" id="remember" name="remember" lay-skin="primary" title="记住密码">
+        </div>
+        <div class="layui-form-item">
+            <button class="layui-btn layui-btn-fluid" lay-submit="" lay-filter="login-submit">登 录</button>
+        </div>
+    </form>
+    <script>
+        const Notice = require('./renderer-process/notice.js');
+        window.$ = require('./lib/jquery/jquery-3.1.1.min.js');
+        const axios = require('./renderer-process/server');
+        let formData = localStorage.getItem('formData');
+        if(formData){
+            let data = JSON.parse(formData);
+            $("#username").val(data.username);
+            $("#password").val(data.password);
+            $("#remember").attr("checked",true);
+        }
+        // axios({
+        //     url:"/index/home",
+        // }).then(res=>{
+        //     if (res.code === 200){
+        //         window.location.href='./index.html';
+        //     }
+        // })
+        layui.use(['form'],function(){
+            let form = layui.form
+            form.on('submit(login-submit)', function(data){
+                let formData = data.field;
+                if(formData.remember){
+                    localStorage.setItem('formData',JSON.stringify(formData))
+                }else{
+                    localStorage.removeItem('formData');
+                }
+                // window.location.href='./index.html';
+                axios({
+                    url:"/index/login",
+                    data:formData
+                }).then(res=>{
+                    if (res.code===200){
+                        window.location.href='./index.html';
+                    }
+                })
+                return false;
+            });
+        })
+    </script>
+</body>
+</html>

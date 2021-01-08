@@ -1,0 +1,60 @@
+<style>
+    table td textarea{
+        width:100%;
+    }
+    .imageUpload{
+        position:relative;
+        width:100%;
+        height:100%;
+        display:block;
+        text-align:center;
+    }
+    .imageUpload input{
+        width:100%;
+        height:100%;
+        position:absolute;
+        opacity:0;
+        left: 0;
+    }
+    /*.imageUpload img{*/
+    /*    width:100%;*/
+    /*    height:100%;*/
+    /*}*/
+    .doc{
+        display:flex;
+    }
+    .leftTree{
+        width:200px;
+        height:100%;
+        flex-shrink: 0;
+        margin-right: 20px;
+    }
+    .rightContent{
+        width:100%;
+    }
+    .header{
+        display:flex;
+    }
+</style>
+<div class="doc">
+    <div class="leftTree">
+        <div id="timeTree"></div>
+    </div>
+<!--    <button id="ccc">aaa</button>-->
+    <div class="rightContent">
+        <div class="header">
+            <span class="content" style="flex-shrink:0;">2020-12-25 name 编辑</span>
+            <div class="btnDiv" style="display:inline-block;text-align:right;width:100%;">
+                <button id="docAdd" class="layui-btn layui-btn-sm">新增</button>
+                <button id="docDel" class="layui-btn layui-btn-danger layui-btn-sm">删除</button>
+                <button id="docSave" class="layui-btn layui-btn-normal layui-btn-sm">保存</button>
+                <button id="addLine" class="layui-btn layui-btn-sm">追加一行</button>
+                <button id="delLine" class="layui-btn layui-btn-sm">删除一行</button>
+            </div>
+        </div>
+        <div id="DocContent">
+
+        </div>
+    </div>
+</div>
+<script src="renderer-process/doc/doc.js"></script>

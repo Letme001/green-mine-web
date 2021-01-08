@@ -1,0 +1,120 @@
+<div id="systemMenuSearch">
+    <form class="layui-form" lay-filter="sysMenuSearchFrom">
+        <div class="layui-form-item layui-inline">
+            <button id="systemMenuAddFun" class="layui-btn">新增</button>
+        </div>
+        <div class="layui-form-item layui-inline">
+            <label class="layui-form-label">公司名称</label>
+            <div class="layui-input-block">
+                <select name="companyId" id="companyId">
+
+                </select>
+            </div>
+        </div>
+    </form>
+</div>
+<table class="layui-hidden" id="treeTable" lay-filter="treeTable"></table>
+<div id="systemMenuAdd" style="display:none;">
+    <form class="layui-form" lay-filter="systemMenuForm" style="margin:20px;">
+        <input type="hidden" name="id">
+        <input type="hidden" name="pid">
+        <div class="layui-form-item">
+            <label class="layui-form-label" for="pid">父级菜单</label>
+            <div class="layui-input-block">
+                <input onclick="systemMenu.selectParent()" type="text" readonly id="parentName" name="parentName" placeholder="请输入" lay-filter="parentName" class="layui-input" />
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label" for="name">菜单名称</label>
+            <div class="layui-input-block">
+                <input type="text" id="title" name="title" placeholder="请输入" lay-filter="title" class="layui-input" />
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label" for="type">菜单类型</label>
+            <div class="layui-input-block">
+                <select name="type" id="type" lay-filter="type">
+                    <option value="2">菜单</option>
+                    <option value="3">按钮</option>
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label" for="docType">文档类型</label>
+            <div class="layui-input-block">
+                <select name="docType" id="docType" lay-filter="docType">
+                    <option value="2">表格</option>
+                    <option value="1">文档</option>
+                    <option value="3">图文</option>
+                    <option value="4">PDF</option>
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label" for="perms">授权</label>
+            <div class="layui-input-block">
+                <input type="text" id="perms" name="perms" placeholder="请输入" lay-filter="perms" class="layui-input" />
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label" for="url">访问地址</label>
+            <div class="layui-input-block">
+                <input type="text" id="url" name="url" placeholder="请输入" lay-filter="url" class="layui-input" />
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label" for="orderNum">排序</label>
+            <div class="layui-input-block">
+                <input type="text" id="orderNum" name="orderNum" placeholder="请输入" lay-filter="orderNum" class="layui-input" />
+            </div>
+        </div>
+        <div class="layui-form-item" style="text-align:right;">
+            <button type="submit" lay-submit="" lay-filter="systemMenuSave" class="layui-btn">提交</button>
+        </div>
+    </form>
+</div>
+<div id="saveDoc" style="display:none;">
+    <form class="layui-form" lay-filter="saveDocForm" style="margin:20px;">
+        <input type="hidden" name="id">
+        <input type="hidden" name="permissionId">
+        <div class="layui-form-item">
+            <label class="layui-form-label" for="docHtml">文档</label>
+            <div class="layui-input-block">
+<!--                <input type="file" onchange="systemMenu.change(event)">-->
+                <textarea name="docHtml" id="docHtml" style="width:100%;" rows="30"></textarea>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label" for="docHtml">追加片段</label>
+            <div class="layui-input-block">
+                <textarea name="lineData" id="lineData" style="width:100%;" rows="30"></textarea>
+            </div>
+        </div>
+        <div class="layui-form-item" style="text-align:right;">
+            <button type="submit" lay-submit="" lay-filter="saveDocFormSave" class="layui-btn">提交</button>
+        </div>
+    </form>
+</div>
+<div id="saveExcel" style="display:none;">
+    <form class="layui-form" lay-filter="saveExcelForm" style="margin:20px;">
+        <input type="hidden" name="id">
+        <input type="hidden" name="permissionId">
+        <div class="layui-form-item">
+            <label class="layui-form-label" for="docHtml">表头</label>
+            <div class="layui-input-block">
+                <!--                <input type="file" onchange="systemMenu.change(event)">-->
+                <textarea name="tableHeader" id="tableHeader" style="width:100%;" rows="6"></textarea>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label" for="docHtml">行数据</label>
+            <div class="layui-input-block">
+                <textarea name="lineData" id="lineData" style="width:100%;" rows="3"></textarea>
+            </div>
+        </div>
+        <div class="layui-form-item" style="text-align:right;">
+            <button type="submit" lay-submit="" lay-filter="saveExcelFormSave" class="layui-btn">提交</button>
+        </div>
+    </form>
+</div>
+<script src="renderer-process/system/menu.js"></script>

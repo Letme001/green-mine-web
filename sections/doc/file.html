@@ -1,0 +1,14 @@
+<style>
+
+</style>
+<div>
+    <div class="btnDiv" style="display:inline-block;text-align:right;width:100%;">
+        <button onclick="files.addFolder()" class="layui-btn layui-btn-sm">新建文件夹</button>
+        <button type="button" class="layui-btn upload layui-btn-sm">
+            <i class="layui-icon">&#xe67c;</i>上传文件
+        </button>
+        <button onclick="files.delFolder()" class="layui-btn layui-btn-sm layui-btn-danger">删除</button>
+    </div>
+    <table id="fileTree" lay-filter="fileTree"></table>
+</div>
+<script src="renderer-process/doc/file.js"></script>

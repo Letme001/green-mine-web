@@ -1,0 +1,51 @@
+<div id="sysDepartmentSearch">
+    <form class="layui-form" lay-filter="sysDepartmentSearchForm">
+        <div class="layui-form-item layui-inline">
+            <button id="sysDepartmentAddFun" class="layui-btn">新增</button>
+        </div>
+
+<!--        <div class="layui-form-item layui-inline">-->
+<!--            <button type="submit" lay-submit="" lay-filter="sysDepartmentSearch" class="layui-btn">搜索</button>-->
+<!--            <button type="button" onclick='sysDepartment.reStart()' class="layui-btn layui-btn-primary">重置</button>-->
+<!--        </div>-->
+    </form>
+</div>
+<table id="sysDepartment"></table>
+<div id="sysDepartmentAdd" style="display:none;">
+    <form lay-filter="sysDepartmentForm" class="layui-form" style="margin:20px;">
+        <input type="hidden" name="id">
+        <input type="hidden" name="pid" value="0">
+        <div class="layui-form-item">
+            <label class="layui-form-label" for="parentName">顶级部门</label>
+            <div class="layui-input-block">
+                <input type="text" onclick="sysDepartment.selectParent()" value="顶级部门" readonly id="parentName" name="parentName" placeholder="请输入" lay-verify="required"
+                       lay-filter="parentName" class="layui-input"/>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label" for="title">部门名称</label>
+            <div class="layui-input-block">
+                <input type="text" id="title" name="title" placeholder="请输入" lay-verify="required"
+                       lay-filter="title" class="layui-input"/>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label" for="managerName">部门负责人</label>
+            <div class="layui-input-block">
+                <input type="text" id="managerName" name="managerName" placeholder="请输入"
+                       lay-filter="managerName" class="layui-input"/>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label" for="phone">联系电话</label>
+            <div class="layui-input-block">
+                <input type="text" id="phone" name="phone" placeholder="请输入"
+                       lay-filter="phone" class="layui-input"/>
+            </div>
+        </div>
+        <div class="layui-form-item" style="text-align:right;">
+            <button type="submit" lay-submit="" lay-filter="sysDepartmentSave" class="layui-btn">提交</button>
+        </div>
+    </form>
+</div>
+<script src="renderer-process/system/department.js"></script>

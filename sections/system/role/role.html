@@ -1,0 +1,47 @@
+<div id="systemRoleSearch">
+    <form class="layui-form" lay-filter="searchForm">
+        <div class="layui-form-item layui-inline">
+            <button id="systemRoleAddFun" class="layui-btn">新增</button>
+        </div>
+        <div class="layui-form-item layui-inline">
+            <label class="layui-form-label">角色名称</label>
+            <div class="layui-input-block">
+                <input class="layui-input" name="name" lay-filter="name" placeholder="请输入" type="text"/>
+            </div>
+        </div>
+        <div class="layui-form-item layui-inline">
+            <button type="submit" lay-submit="" lay-filter="systemRoleSearch" class="layui-btn">搜索</button>
+            <button type="button" onclick="systemRole.reStart()" class="layui-btn layui-btn-primary">重置</button>
+        </div>
+    </form>
+</div>
+<table id="systemRole"></table>
+<div id="systemRoleAdd" style="display:none;">
+    <form lay-filter="systemRoleForm" class="layui-form" style="margin:20px;">
+        <input type="hidden" name="id">
+        <input type="hidden" name="departmentId">
+        <div class="layui-form-item">
+            <label class="layui-form-label" for="name">角色名</label>
+            <div class="layui-input-block">
+                <input type="text" id="name" name="name" placeholder="请输入" lay-verify="required" lay-filter="name" class="layui-input" />
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">部门名称</label>
+            <div class="layui-input-block">
+                <input type="text" onclick="systemRole.selectDept()" readonly id="departmentName" name="departmentName" placeholder="请输入" lay-verify="required" lay-filter="departmentName" class="layui-input" />
+            </div>
+        </div>
+<!--        <div class="layui-form-item">-->
+<!--            <label class="layui-form-label" for="password">备注</label>-->
+<!--            <div class="layui-input-block">-->
+<!--                <input type="text" id="password" name="password" placeholder="请输入" lay-verify="required" lay-filter="password" class="layui-input" />-->
+<!--            </div>-->
+<!--        </div>-->
+        <div class="layui-form-item" style="text-align:right;">
+            <button type="submit" lay-submit="" lay-filter="systemRoleSave" class="layui-btn">提交</button>
+        </div>
+    </form>
+</div>
+<script src="renderer-process/system/role.js"></script>
+

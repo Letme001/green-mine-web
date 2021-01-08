@@ -1,0 +1,52 @@
+<div id="systemCompanySearch">
+    <form class="layui-form" lay-filter="searchForm">
+        <div class="layui-form-item layui-inline">
+            <button id="systemCompanyAddFun" class="layui-btn">新增</button>
+        </div>
+        <div class="layui-form-item layui-inline">
+            <label class="layui-form-label">公司名称</label>
+            <div class="layui-input-block">
+                <input class="layui-input" name="companyName" lay-filter="companyName" placeholder="请输入" type="text"/>
+            </div>
+        </div>
+        <div class="layui-form-item layui-inline">
+            <button type="submit" lay-submit="" lay-filter="systemCompanySearch" class="layui-btn">搜索</button>
+            <button onclick="systemCompany.reStart()" type="button" class="layui-btn layui-btn-primary">重置</button>
+        </div>
+    </form>
+</div>
+<table id="systemCompany"></table>
+<div id="systemCompanyAdd" style="display:none;">
+    <form class="layui-form" lay-filter="systemCompanyForm" style="margin:20px;">
+        <input type="hidden" name="id">
+        <div class="layui-form-item">
+            <label class="layui-form-label" for="companyName">公司名称</label>
+            <div class="layui-input-block">
+                <input type="text" id="companyName" lay-verify="required" name="companyName" placeholder="请输入" lay-filter="companyName" class="layui-input" />
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label" for="companyLeader">负责人</label>
+            <div class="layui-input-block">
+                <input type="text" id="companyLeader" lay-verify="required" name="companyLeader" placeholder="请输入" lay-filter="companyLeader" class="layui-input" />
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label" for="companyPhone">公司电话</label>
+            <div class="layui-input-block">
+                <input type="text" id="companyPhone" lay-verify="required" name="companyPhone" placeholder="请输入" lay-filter="companyPhone" class="layui-input" />
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label" for="companyAddress">公司地址</label>
+            <div class="layui-input-block">
+                <input type="text" id="companyAddress" lay-verify="required" name="companyAddress" placeholder="请输入" lay-filter="companyAddress" class="layui-input" />
+            </div>
+        </div>
+        <div class="layui-form-item" style="text-align:right;">
+            <button type="submit" lay-submit="" lay-filter="systemCompanySave" class="layui-btn">提交</button>
+        </div>
+    </form>
+</div>
+<script src="renderer-process/system/company.js"></script>
+
